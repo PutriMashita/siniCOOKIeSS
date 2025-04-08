@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Testimoni - siniCOOKIeSS</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff8f0;
+    }
+    nav {
+      background-color: #301b04;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #d2691e;
+      font-weight: bold;
+    }
+    .testimoni-container {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .form-box {
+      background-color: #fff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-family: inherit;
+    }
+    button {
+      background-color: #d2691e;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #a44e14;
+    }
+    .testi-box {
+      background-color: #7b2d0d;
+      border-left: 5px solid #d2691e;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+      max-width: 600px;
+      text-align: left;
+      font-style: italic;
+      color: white;
+      position: relative;
+    }
+    .testi-box::before {
+      content: "\201C";
+      font-size: 3rem;
+      color: #d2691e;
+      position: absolute;
+      top: -10px;
+      left: 10px;
+    }
+    .testi-author {
+      margin-top: 0.5rem;
+      text-align: right;
+      font-weight: bold;
+      font-style: normal;
+      color: #ffe4c4;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="beranda.html">Beranda</a></li>
+      <li><a href="produk.html">Produk</a></li>
+      <li><a href="tentang.html">Tentang</a></li>
+      <li><a href="testimoni.html">Testimoni</a></li>
+      <li><a href="pesan.html">Pesan</a></li>
+    </ul>
+  </nav>
+
+  <section class="testimoni-container">
+    <div class="form-box">
+      <h2>Kirim Testimoni Kamu</h2>
+      <form id="formTesti">
+        <input type="text" id="nama" placeholder="Nama" required />
+        <textarea id="pesan" placeholder="Tulis testimoni kamu di sini..." rows="4" required></textarea>
+        <button type="submit">Kirim</button>
+      </form>
+    </div>
+
+    <div id="listTestimoni">
+      <div class="testi-box">
+        Cookies-nya enak banget! Manisnya pas dan teksturnya chewy!
+        <div class="testi-author">- Rina</div>
+      </div>
+      <div class="testi-box">
+        Udah langganan tiap bulan. Packaging juga cantik!
+        <div class="testi-author">- Dimas</div>
+      </div>
+      <div class="testi-box">
+        Rasanya beda dari cookies lain. Serasa buatan mama di rumah!
+        <div class="testi-author">- Tia</div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById('formTesti');
+    const list = document.getElementById('listTestimoni');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); 
+
+      const nama = document.getElementById('nama').value.trim();
+      const pesan = document.getElementById('pesan').value.trim();
+
+      if (nama && pesan) {
+        const box = document.createElement('div');
+        box.className = 'testi-box';
+        box.innerHTML = `
+          ${pesan}
+          <div class="testi-author">- ${nama}</div>
+        `;
+        list.appendChild(box); 
+        form.reset();
+      }
+    });
+  </script>
+</body>
+</html>
